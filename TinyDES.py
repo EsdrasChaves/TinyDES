@@ -1,5 +1,5 @@
 import math 
-KEY = '0111010101010101'
+KEY = '1111110111010000'
 tabelaSBoxLeft = [[6,9,10,3,4,13,7,8,14,1,2,11,5,12,15,0],
                   [9,14,11,10,4,5,0,7,8,6,3,2,12,13,1,15],
                   [8,1,12,2,13,3,14,15,0,9,5,10,4,11,6,7],
@@ -32,7 +32,7 @@ def blocosParaString(blocos):
 
 
 #recebe uma string de 16 bits e retorna ela cifrada
-def cifrar16(bloco,chave,decifra = 1):
+def cifrar16(bloco,chave=KEY,decifra = 1):
     keys = quebraChave(chave)[::decifra]
     for key in keys:
         l,r = divideBlocoEmDois(bloco)
@@ -47,7 +47,7 @@ def cifrar16(bloco,chave,decifra = 1):
         bloco = vaiSerOl + r
     return bloco
 
-def decifra16(bloco,chave):
+def decifra16(bloco,chave=KEY):
     l,r = divideBlocoEmDois(bloco)
     x  = cifrar16(r+l,chave,-1)
     l,r = divideBlocoEmDois(x)
@@ -97,19 +97,20 @@ def teste():
         if(d != num):
             print("n é q errou mesmo")
 def main():
-    mensagem = input("digite uma mensagem: ")
-    BlocosMsg = dividirEmBlocos(mensagem)
-    msgEncriptada = [cifrar16(i,KEY) for i in BlocosMsg]
-    msgStr = ''.join(msgEncriptada)
-    print('\n\nmensagem cifrada:')
-    print('\nbinary:')
-    print(msgStr)
-    print('\nhex:')
-    print(str(hex(int(msgStr, 2))))
+    # mensagem = input("digite uma mensagem: ")
+    # BlocosMsg = dividirEmBlocos(mensagem)
+    # msgEncriptada = [cifrar16(i,KEY) for i in BlocosMsg]
+    # msgStr = ''.join(msgEncriptada)
+    # print('\n\nmensagem cifrada:')
+    # print('\nbinary:')
+    # print(msgStr)
+    # print('\nhex:')
+    # print(str(hex(int(msgStr, 2))))
 
-    msgDecifrada = [decifra16(i,KEY) for i in msgEncriptada]
-    msgDecifrada = blocosParaString(msgDecifrada)
-    print("\nmensagem decifrada: " + msgDecifrada)
+    # msgDecifrada = [decifra16(i,KEY) for i in msgEncriptada]
+    # msgDecifrada = blocosParaString(msgDecifrada)
+    # print("\nmensagem decifrada: " + msgDecifrada)
+    print(cifrar16('1001110100111100'))
 
 
 if (__name__ == '__main__'):
