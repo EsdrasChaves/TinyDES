@@ -1,5 +1,4 @@
 # cryptanalysis-tiny-des
-:school_satchel: Differential Cryptanalysis of Tiny-DES
 
 An implementation of a simplified version of the DES algorithm and its differential analysis.
 
